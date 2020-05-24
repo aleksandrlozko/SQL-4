@@ -2,3 +2,6 @@
 1) create.sql
 2) populate.sql
 3) trigger.sql
+4) function.sql
+5) 
+6) run.sql
