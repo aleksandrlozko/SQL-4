@@ -1,4 +1,4 @@
-CREATE or REPLACE procedure update_actor(
+CREATE OR REPLACE PROCEDURE update_actor(
     movie_name varchar,
     act_name varchar
 ) AS
