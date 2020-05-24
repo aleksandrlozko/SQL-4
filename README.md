@@ -3,5 +3,5 @@
 2) populate.sql
 3) trigger.sql
 4) function.sql
-5) 
+5) procedure.sql
 6) run.sql
