@@ -37,9 +37,4 @@ exception
     WHEN no_data THEN
         dbms_output.put_line('Actor or Movie does not exist!');
         
-    WHEN others THEN
-        dbms_output.put_line('Something else went wrong - '
-                             || sqlcode
-                             || ' : '
-                             || sqlerrm);
 END;
