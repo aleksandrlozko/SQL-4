@@ -19,3 +19,7 @@ BEGIN
     END LOOP;
     RETURN result_movie;
 END;
+ 
+--TRY--                                                      
+--SELECT * 
+--FROM TABLE(get_title1(70, 2010));
