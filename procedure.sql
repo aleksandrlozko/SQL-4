@@ -1,40 +1,37 @@
-CREATE OR REPLACE PROCEDURE update_actor(
-    movie_name varchar,
-    act_name varchar
-) AS
+CREATE OR REPLACE PROCEDURE actor_proc (actor_name IN main_actor.actor_name%TYPE,
+act IN main_actor.actor_name%TYPE, 
+mov IN main_actor.movie_title%TYPE)
 
-movie_status number;
-actor_status number;
-no_data exception;
+IS cursor title_actor
+IS SELECT actor_name
+FROM actor;
+ex exception;
 
 BEGIN
-    SELECT
-        COUNT(*)
-    INTO movie_status
-    FROM
-        main_actor
-    WHERE
-        movie_title = movie_name;
-    SELECT
-        COUNT(*)
-    INTO actor_status
-    FROM
-        main_actor
-    WHERE
-        actor_name = act_name;
-    IF (movie_name = 1) AND (act_name = 1)  THEN
-    UPDATE main_actor
-        SET
-            actor_name = act_name
-        WHERE
-            movie_title = movie_name;
-    ELSE
-        raise no_data;
-    END IF;
-
-exception
-
-    WHEN no_data THEN
-        dbms_output.put_line('Actor or Movie does not exist!');
+ FOR line IN title_actor
+ 
+        LOOP
+        IF (act = rec.actor_name) 
+        THEN raise ex;
+        end if;
+        end loop;
         
+UPDATE main_actor SET 
+    actor_name = act
+    WHERE movie_title = mov;
+      IF SQL%ROWCOUNT = 0 THEN
+        RAISE NO_DATA_FOUND;
+        END IF;
+        
+RETURN;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  
+    DBMS_OUTPUT.put_line('Movie or actor does not exist!');
+    
+END;
+
+--TRY--
+BEGIN
+actor_proc('Eva', 'TEST', 'elite');
 END;
