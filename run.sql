@@ -1,5 +1,5 @@
 SELECT * 
-FROM TABLE(get_title1(70, 2010));
+FROM TABLE(get_title(70, 2010));
 
 
 BEGIN
