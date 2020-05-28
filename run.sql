@@ -1,7 +1,7 @@
-select * 
-from table(get_title1(70, 2010));
+SELECT * 
+FROM TABLE(get_title1(70, 2010));
 
 
-begin
-update_actor('Go', 'Eva');
-end;
+BEGIN
+actor_proc('Eva', 'TEST', 'elite');
+END;
