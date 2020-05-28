@@ -11,7 +11,7 @@ BEGIN
  FOR line IN title_actor
  
         LOOP
-        IF (act = rec.actor_name) 
+        IF (act = line.actor_name) 
         THEN raise ex;
         end if;
         end loop;
@@ -32,6 +32,6 @@ EXCEPTION
 END;
 
 --TRY--
-BEGIN
-actor_proc('Eva', 'TEST', 'elite');
-END;
+--BEGIN--
+--actor_proc('Eva', 'TEST', 'elite');--
+--END;--
